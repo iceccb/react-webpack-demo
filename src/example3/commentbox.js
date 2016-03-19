@@ -49,7 +49,7 @@ var Pagination = React.createClass({
         page.map(function(i) {
           //这是的this指向窗口
           return (
-            <li className={curPage==i?"active":""}>
+            <li className={curPage==i?"active":""} key={i}>
               <a href="#" onClick={_this.handlePageChange.bind(null,i)}>{i}</a>
             </li>
           )
@@ -87,7 +87,7 @@ var CommentList = React.createClass({
       {
         list.map(function(item){
           return (
-            <div>
+            <div key={item.name}>
               <Comment username={item.name} comment={item.comment} />
               <div className="list-group-separator"></div>
               </div>
@@ -152,7 +152,7 @@ var CommentBox = React.createClass({
     return (
       <div>
         <CommentList list={this.state.list} {...this.props}/>
-        <CommentForm onHandleSubmit={this.updateList}/>
+        <CommentForm onCommentSubmit={this.updateList}/>
       </div>
     )
   }
